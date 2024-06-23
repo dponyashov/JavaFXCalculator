@@ -44,7 +44,7 @@ public class CalculatorController {
             result.append(currentOperation.value());
         }
         if (!currentString.isEmpty()){
-            result.append(currentString.toString());
+            result.append(currentString);
         }
         return result.toString();
     }
