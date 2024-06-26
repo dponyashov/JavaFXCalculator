@@ -1,4 +1,4 @@
-package ru.dponyashov.fxcalculator.fxcontroller;
+package ru.dponyashov.fxcalculator.controller;
 
 import ru.dponyashov.fxcalculator.calculator.Calculator;
 import ru.dponyashov.fxcalculator.exception.CalculatorException;

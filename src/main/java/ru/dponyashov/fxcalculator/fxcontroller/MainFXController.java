@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import ru.dponyashov.fxcalculator.CalculatorApplication;
 import ru.dponyashov.fxcalculator.calculator.CalculatorImpl;
+import ru.dponyashov.fxcalculator.controller.CalculatorController;
 import ru.dponyashov.fxcalculator.exception.CalculatorException;
 
 import java.io.IOException;

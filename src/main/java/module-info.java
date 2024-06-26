@@ -10,4 +10,6 @@ module ru.dponyashov.fxcalculator {
     opens ru.dponyashov.fxcalculator.calculator to javafx.fxml;
     exports ru.dponyashov.fxcalculator.fxcontroller;
     opens ru.dponyashov.fxcalculator.fxcontroller to javafx.fxml;
+    exports ru.dponyashov.fxcalculator.controller;
+    opens ru.dponyashov.fxcalculator.controller to javafx.fxml;
 }
