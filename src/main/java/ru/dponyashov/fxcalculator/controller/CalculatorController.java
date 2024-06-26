@@ -6,8 +6,8 @@ import ru.dponyashov.fxcalculator.utils.Operation;
 
 public class CalculatorController {
     private final Calculator calculator;
-    private String savedResult;
     private final StringBuilder currentString;
+    private String savedResult;
     private Operation currentOperation;
 
     public CalculatorController(Calculator calculator) {
@@ -18,10 +18,10 @@ public class CalculatorController {
     }
 
     public String receiveDigit(String digit) {
-        if(currentString.toString().equals("0") && !digit.equals(".")){
+        if (currentString.toString().equals("0") && !digit.equals(".")) {
             currentString.deleteCharAt(0);
         }
-        if(digit.equals(".")) {
+        if (digit.equals(".")) {
             if (currentString.toString().contains(".")) {
                 return returnString();
             }
@@ -43,16 +43,16 @@ public class CalculatorController {
             }
             result.append(currentOperation.value());
         }
-        if (!currentString.isEmpty()){
+        if (!currentString.isEmpty()) {
             result.append(currentString);
         }
         return result.toString();
     }
 
-    public String receiveOperation(String operation){
-        switch(operation){
-            case "AC":{
-                if(!currentString.isEmpty()){// && !currentString.toString().equals("0")
+    public String receiveOperation(String operation) {
+        switch (operation) {
+            case "AC": {
+                if (!currentString.isEmpty()) {// && !currentString.toString().equals("0")
                     deleteLastSymbol(currentString);
                 } else {
                     currentOperation = Operation.EMPTY;
@@ -60,42 +60,42 @@ public class CalculatorController {
                 }
                 break;
             }
-            case "√":{
+            case "√": {
                 executeCurrentOperation();
                 currentOperation = Operation.SQRT;
                 break;
             }
-            case "X^y":{
+            case "X^y": {
                 executeCurrentOperation();
                 currentOperation = Operation.EXP;
                 break;
             }
-            case "%":{
+            case "%": {
                 executeCurrentOperation();
                 currentOperation = Operation.PERCENT;
                 break;
             }
-            case "+":{
+            case "+": {
                 executeCurrentOperation();
                 currentOperation = Operation.ADDITION;
                 break;
             }
-            case "-":{
+            case "-": {
                 executeCurrentOperation();
                 currentOperation = Operation.SUBTRACTION;
                 break;
             }
-            case "*":{
+            case "*": {
                 executeCurrentOperation();
                 currentOperation = Operation.MULTIPLICATION;
                 break;
             }
-            case "/":{
+            case "/": {
                 executeCurrentOperation();
                 currentOperation = Operation.DIVISION;
                 break;
             }
-            case "=":{
+            case "=": {
                 executeCurrentOperation();
                 currentOperation = Operation.EMPTY;
                 replaceSavedWithCurrent();
@@ -110,8 +110,8 @@ public class CalculatorController {
         savedResult = "";
     }
 
-    private void executeCurrentOperation(){
-        if(currentString.isEmpty()){
+    private void executeCurrentOperation() {
+        if (currentString.isEmpty()) {
             return;
         }
         double variable1 = convertStringToDouble(savedResult);
@@ -120,7 +120,8 @@ public class CalculatorController {
             case EMPTY -> savedResult = currentString.toString();
             case ADDITION -> savedResult = prepareDoubleForOutput(calculator.addition(variable1, variable2));
             case SUBTRACTION -> savedResult = prepareDoubleForOutput(calculator.subtraction(variable1, variable2));
-            case MULTIPLICATION -> savedResult = prepareDoubleForOutput(calculator.multiplication(variable1, variable2));
+            case MULTIPLICATION ->
+                    savedResult = prepareDoubleForOutput(calculator.multiplication(variable1, variable2));
             case DIVISION -> savedResult = prepareDoubleForOutput(calculator.division(variable1, variable2));
             case PERCENT -> savedResult = prepareDoubleForOutput(calculator.percent(variable1, variable2));
             case SQRT -> savedResult = prepareDoubleForOutput(calculator.sqrt(variable1, variable2));
@@ -140,19 +141,19 @@ public class CalculatorController {
         if (value.endsWith(".")) {
             throw new CalculatorException("Неверный ввод");
         }
-        try{
+        try {
             return Double.parseDouble(value);
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new CalculatorException("Неверный ввод");
         }
     }
 
-    private String prepareDoubleForOutput(double value){
+    private String prepareDoubleForOutput(double value) {
         int decimals = 1000000;
         return deleteEmptyDecimal((double) Math.round(value * decimals) / decimals);
     }
 
-    private String deleteEmptyDecimal(double value){
+    private String deleteEmptyDecimal(double value) {
         long integerPart = Math.round(value);
 
         if (integerPart == value) {

@@ -21,7 +21,7 @@ public class CalculatorImpl implements Calculator {
 
     @Override
     public double division(double variable1, double variable2) {
-        if(variable2 == 0.0){
+        if (variable2 == 0.0) {
             throw new CalculatorException("Деление на ноль");
         }
         return variable1 / variable2;
@@ -35,7 +35,7 @@ public class CalculatorImpl implements Calculator {
     @Override
     public double sqrt(double variable1, double variable2) {
         int roundDecimals = 1000000;
-        return ((double) Math.round(Math.pow(variable1, 1.0 / variable2) * roundDecimals))/ roundDecimals;
+        return ((double) Math.round(Math.pow(variable1, 1.0 / variable2) * roundDecimals)) / roundDecimals;
     }
 
     @Override

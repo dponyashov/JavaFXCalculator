@@ -97,12 +97,12 @@ public class MainFXController {
         String operation = button.getText();
         try {
             tfValue.setText(controller.receiveOperation(operation));
-        } catch (CalculatorException e){
-            showMessageWindow(e.getMessage(), ((Node)event.getSource()).getScene().getWindow());
+        } catch (CalculatorException e) {
+            showMessageWindow(e.getMessage(), ((Node) event.getSource()).getScene().getWindow());
         }
     }
 
-    private void showMessageWindow(String text, Window ownerWindow){
+    private void showMessageWindow(String text, Window ownerWindow) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(CalculatorApplication.class.getResource("message-view.fxml"));
